@@ -1,0 +1,427 @@
+/*
+ * The 300px sidebar that used to sit inside the panel card is gone — the shell's
+ * rail carries identity now. What it held has been redistributed: the ladders to
+ * a grid under the stage, the rest to a column beside it.
+ */
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 296px;
+  gap: 20px;
+  align-items: start;
+}
+
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.side {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Section headings ───────────────────────────────────── */
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font: 800 15px var(--font-ui);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.sectionNote {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+}
+
+/* ── Skill ladders ──────────────────────────────────────── */
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.skillCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  min-width: 0;
+}
+
+.skillHead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.skillTile {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 15px var(--font-display);
+  color: #fff;
+  line-height: 1;
+}
+
+.skillNames {
+  min-width: 0;
+}
+
+.skillName {
+  font: 700 13px var(--font-ui);
+  color: var(--color-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.skillSolved {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.skillLevel {
+  font: 700 24px var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.skillTrack {
+  height: 6px;
+  background: var(--color-border-light);
+  border-radius: var(--radius-pill);
+  margin: 9px 0 7px;
+  overflow: hidden;
+}
+
+.skillFill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.4s ease;
+}
+
+.skillHint {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Side cards ─────────────────────────────────────────── */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: var(--radius-card);
+  padding: 18px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.cardTitle {
+  font: 800 14px var(--font-ui);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.cardMeta {
+  font: 600 11px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.cardNote {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+
+.countdown {
+  font: 700 11px var(--font-ui);
+  color: var(--color-amber-dark);
+  background: var(--color-amber-tint);
+  border-radius: var(--radius-pill);
+  padding: 3px 9px;
+  white-space: nowrap;
+}
+
+/* ── Session goal ring ──────────────────────────────────── */
+
+.goalRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ring {
+  flex: none;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-primary) 0% var(--ring, 0%),
+    var(--color-border-light) var(--ring, 0%) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.4s ease;
+}
+
+.ringFace {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ringValue {
+  font: 700 18px var(--font-display);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.ringUnit {
+  font: 600 9px var(--font-ui);
+  color: var(--color-muted);
+  letter-spacing: 0.06em;
+}
+
+.goalText {
+  font: 500 12px var(--font-ui);
+  color: var(--color-body-alt);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Seven-day strip ────────────────────────────────────── */
+
+.strip {
+  display: flex;
+  gap: 5px;
+  margin-top: 16px;
+}
+
+.stripDay {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+}
+
+/* A real bar chart of XP per day, not a practised/not-practised strip — the
+   history table records the amount now. */
+.stripTrack {
+  width: 100%;
+  height: 34px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.stripBar {
+  width: 100%;
+  border-radius: 6px;
+  background: var(--color-primary);
+  display: block;
+  min-height: 4px;
+  transition: height 0.4s ease;
+}
+
+/* Today, still open — the one day that can still change. */
+.stripToday {
+  background: var(--color-indigo-lighter);
+}
+
+.stripLabel {
+  font: 600 10px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.stripNote {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  margin-top: 10px;
+}
+
+/* ── League standing ────────────────────────────────────── */
+
+.standings {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.standing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 10px;
+  border-radius: var(--radius-nav);
+  background: var(--color-surface-input);
+}
+
+.standingMe {
+  background: var(--color-primary-tint);
+}
+
+.standingPos {
+  width: 16px;
+  font: 700 12px var(--font-display);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.standingMe .standingPos {
+  color: var(--color-primary);
+}
+
+.standingName {
+  flex: 1;
+  min-width: 0;
+  font: 600 13px var(--font-ui);
+  color: var(--color-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.standingXp {
+  font: 700 12px var(--font-display);
+  color: var(--color-body-alt);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Closest to unlocking ───────────────────────────────── */
+
+.badgeList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.badgeIcon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.badgeBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.badgeHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.badgeName {
+  font: 700 12px var(--font-ui);
+  color: var(--color-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.badgeProgress {
+  font: 600 11px var(--font-ui);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.badgeTrack {
+  height: 5px;
+  background: var(--color-border-light);
+  border-radius: var(--radius-pill);
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.badgeFill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary);
+  transition: width 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skillFill,
+  .badgeFill,
+  .stripBar,
+  .ring {
+    transition: none;
+  }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 1180px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Side by side rather than stacked, once the column is the full width. */
+  .side {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .side > * {
+    flex: 1 1 260px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .skillGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .skillGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .side {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,679 @@
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── The stage ───────────────────────────────────────────── */
+/*
+ * Arithmetic is the point of the screen, so it is the brightest thing on it.
+ * Everything else here — tabs, dial, ladder — is expressed against the dark
+ * surface rather than competing with the question for contrast.
+ */
+
+.panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: var(--color-stage);
+  border-radius: var(--radius-stage);
+  width: 100%;
+}
+
+.panelStudio {
+  padding: 26px 28px 24px;
+}
+
+.panelFocus {
+  padding: 40px 44px 34px;
+  max-width: 780px;
+}
+
+/* Decorative only: gives the flat dark rectangle a light source. */
+.glow {
+  position: absolute;
+  inset: auto -60px -90px auto;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 92, 255, 0.3), transparent 68%);
+  pointer-events: none;
+}
+
+/* Everything real sits above the glow. */
+.panel > *:not(.glow) {
+  position: relative;
+}
+
+/* ── Area tabs ───────────────────────────────────────────── */
+
+.areaTabs {
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  background: var(--color-stage-raise);
+  border-radius: var(--radius-md);
+  padding: 4px;
+}
+
+.areaTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 8px 18px;
+  min-height: 46px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.areaTabLabel {
+  font: 700 13px var(--font-ui);
+  color: var(--color-stage-text);
+  white-space: nowrap;
+}
+
+/* The operator stands in for the word once there is no room for both. */
+.areaTabSym {
+  display: none;
+  font: 700 17px var(--font-display);
+  color: var(--color-stage-text);
+  line-height: 1;
+}
+
+.areaTabLevel {
+  font: 600 10px var(--font-ui);
+  color: rgba(255, 255, 255, 0.32);
+  letter-spacing: 0.03em;
+}
+
+.areaTab:hover:not(.areaTabActive) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.areaTabActive {
+  background: var(--color-surface);
+}
+
+.areaTabActive .areaTabLabel,
+.areaTabActive .areaTabSym {
+  color: var(--color-primary);
+}
+
+.areaTabActive .areaTabLevel {
+  color: var(--color-indigo-light);
+}
+
+/* ── Question and dial ───────────────────────────────────── */
+
+.stageRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 6px;
+}
+
+.stageMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.problem {
+  font: 700 clamp(34px, 6vw, 66px) var(--font-display);
+  color: #fff;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  overflow-wrap: anywhere;
+}
+
+/* Same metrics as .problem, so revealing the question doesn't shift the layout. */
+.problemMasked {
+  font: 700 clamp(34px, 6vw, 66px) var(--font-display);
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.answerRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.equals {
+  font: 700 40px var(--font-display);
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+}
+
+.input {
+  width: 210px;
+  max-width: 100%;
+  padding: 14px 20px;
+  font: 700 36px var(--font-display);
+  color: #fff;
+  text-align: center;
+  background: var(--color-stage-raise);
+  border: 2px solid var(--color-stage-accent);
+  border-radius: 16px;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+  font-variant-numeric: tabular-nums;
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.inputCorrect {
+  background: rgba(14, 157, 110, 0.16);
+  border-color: var(--color-success);
+  color: var(--color-success-bright);
+}
+
+.inputWrong {
+  background: rgba(224, 67, 107, 0.16);
+  border-color: var(--color-error);
+  color: #ffb3c6;
+}
+
+/* White on the dark stage, and beside the input rather than under it — the eye
+   travels equation → answer → action along one line. */
+.checkBtn {
+  font: 700 15px var(--font-ui);
+  color: var(--color-stage);
+  background: #fff;
+  border-radius: 14px;
+  padding: 15px 26px;
+  min-height: 46px;
+  transition: opacity 0.15s;
+}
+
+.checkBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.checkBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.stageBtn {
+  align-self: flex-start;
+  font: 700 15px var(--font-ui);
+  color: var(--color-stage);
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px 24px;
+  min-height: 46px;
+  transition: opacity 0.15s;
+}
+
+.stageBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.hint {
+  font: 500 12px var(--font-ui);
+  color: rgba(255, 255, 255, 0.42);
+}
+
+/* ── The dial ────────────────────────────────────────────── */
+
+.dialWrap {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.dial {
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--color-stage-accent) 0% var(--ring, 0%),
+    rgba(255, 255, 255, 0.1) var(--ring, 0%) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialOver {
+  background: conic-gradient(
+    var(--color-amber) 0% var(--ring, 0%),
+    rgba(255, 255, 255, 0.1) var(--ring, 0%) 100%
+  );
+}
+
+.dialFace {
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+  background: var(--color-stage);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+
+.dialValue {
+  font: 700 28px var(--font-display);
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.dialTarget {
+  font: 600 10px var(--font-ui);
+  color: var(--color-stage-muted);
+  letter-spacing: 0.08em;
+}
+
+.speedBand {
+  font: 700 11px var(--font-ui);
+  color: var(--color-indigo-lighter);
+  background: var(--color-stage-accent-tint);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.speedBandOver {
+  color: var(--color-amber);
+  background: var(--color-amber-tint);
+}
+
+/* ── Result ──────────────────────────────────────────────── */
+
+.result {
+  display: flex;
+  flex-direction: column;
+}
+
+.correctPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: rgba(14, 157, 110, 0.16);
+  border-radius: var(--radius-card);
+  animation: popIn 0.22s ease-out;
+}
+
+.levelUp {
+  font: 800 13px var(--font-ui);
+  color: #fff;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-skill-div));
+  border-radius: var(--radius-pill);
+  padding: 6px 16px;
+  letter-spacing: 0.01em;
+}
+
+.correctHead {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.correctMark {
+  font: 700 17px var(--font-ui);
+  color: var(--color-success-bright);
+}
+
+.xpGain {
+  font: 800 20px var(--font-display);
+  color: var(--color-success-bright);
+  font-variant-numeric: tabular-nums;
+}
+
+.xpBreakdown {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.speedTag {
+  font: 700 11px var(--font-ui);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+  background: var(--color-stage-raise);
+  color: var(--color-stage-text);
+}
+
+.speedTag[data-speed='lightning'] {
+  background: var(--color-stage-accent);
+  color: #fff;
+}
+
+.speedTag[data-speed='quick'] {
+  background: var(--color-stage-accent-tint);
+  color: var(--color-indigo-lighter);
+}
+
+.speedTag[data-speed='slow'] {
+  background: rgba(230, 150, 42, 0.2);
+  color: var(--color-amber);
+}
+
+.xpMath {
+  font: 500 11px var(--font-ui);
+  color: var(--color-stage-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Wrong ───────────────────────────────────────────────── */
+
+.wrongPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 16px;
+  background: rgba(224, 67, 107, 0.16);
+  border-radius: var(--radius-card);
+  animation: popIn 0.22s ease-out;
+}
+
+.wrongLine {
+  font: 600 14px var(--font-ui);
+  color: var(--color-stage-text);
+}
+
+.wrongValue {
+  font: 800 18px var(--font-display);
+  color: #ffb3c6;
+}
+
+.methodBox {
+  font: 500 13px var(--font-ui);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  width: 100%;
+  text-align: left;
+}
+
+.methodLabel {
+  font-weight: 700;
+  color: #ffb3c6;
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-stage-line);
+}
+
+.ladder {
+  flex: 1;
+  min-width: 0;
+}
+
+.ladderHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 7px;
+}
+
+.ladderLevel {
+  font: 700 12px var(--font-ui);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ladderHint {
+  font: 500 11px var(--font-ui);
+  color: var(--color-stage-muted);
+  white-space: nowrap;
+}
+
+.ladderTrack {
+  height: 7px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.ladderFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-stage-accent), var(--color-indigo-lighter));
+  border-radius: var(--radius-pill);
+  transition: width 0.4s ease;
+}
+
+.solved,
+.streak {
+  font: 500 12px var(--font-ui);
+  color: var(--color-stage-muted);
+  white-space: nowrap;
+}
+
+.streak {
+  font-weight: 700;
+  color: var(--color-amber);
+}
+
+@keyframes popIn {
+  from { transform: scale(0.97); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .correctPanel,
+  .wrongPanel { animation: none; }
+  .ladderFill { transition: none; }
+  .areaTab, .checkBtn, .stageBtn, .input { transition: none; }
+}
+
+/* Focus is the same stage without the surrounding page, so it only changes size. */
+.panelFocus .problem,
+.panelFocus .problemMasked {
+  font-size: clamp(40px, 7vw, 76px);
+}
+
+@media (max-width: 900px) {
+  .stageRow {
+    gap: 20px;
+  }
+
+  .dial {
+    width: 96px;
+    height: 96px;
+  }
+
+  .dialFace {
+    width: 76px;
+    height: 76px;
+  }
+
+  .dialValue {
+    font-size: 22px;
+  }
+
+  .areaTab {
+    padding: 8px 12px;
+  }
+}
+
+/*
+ * On a phone the pad below needs the room, so the question stacks: tabs across
+ * the top, equation centred, the dial reduced to a line of text under it.
+ */
+@media (max-width: 620px) {
+  .panelStudio,
+  .panelFocus {
+    padding: 16px 18px 18px;
+    gap: 14px;
+    border-radius: var(--radius-card);
+    /* Fills the viewport under the top bar so the keypad has somewhere to sit. */
+    min-height: calc(100vh - 190px);
+  }
+
+  .areaTabs {
+    width: 100%;
+    padding: 3px;
+    gap: 4px;
+  }
+
+  .areaTab {
+    flex: 1;
+    padding: 8px 0;
+    min-height: 44px;
+  }
+
+  .areaTabLabel {
+    display: none;
+  }
+
+  .areaTabSym {
+    display: block;
+  }
+
+  .areaTabLevel {
+    font-size: 9px;
+  }
+
+  .stageRow {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 0;
+  }
+
+  .stageMain {
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .problem,
+  .problemMasked,
+  .panelFocus .problem,
+  .panelFocus .problemMasked {
+    font-size: 42px;
+    text-align: center;
+  }
+
+  .answerRow {
+    justify-content: center;
+  }
+
+  .equals {
+    display: none;
+  }
+
+  .input {
+    width: 190px;
+    padding: 10px;
+    font-size: 30px;
+  }
+
+  /* The keypad carries the action down here, so the inline button would be a
+     second copy of the same control. */
+  .checkBtn {
+    display: none;
+  }
+
+  .hint {
+    text-align: center;
+    font-size: 11px;
+  }
+
+  .stageBtn {
+    align-self: center;
+  }
+
+  /* The dial's job on a phone is done by one line of text. */
+  .dialWrap {
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .dial {
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+  }
+
+  .dialFace {
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    gap: 5px;
+    border-radius: 0;
+    background: none;
+  }
+
+  .dialValue {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-stage-muted);
+  }
+
+  .dialTarget {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+
+  .speedBand {
+    font-size: 10px;
+    padding: 3px 9px;
+  }
+
+  /* The ladder gets its own line rather than being squeezed to "A…" — which
+     skill you are climbing is the whole point of the label. */
+  .footer {
+    padding-top: 12px;
+    gap: 4px 12px;
+    flex-wrap: wrap;
+  }
+
+  .ladder {
+    flex: 1 0 100%;
+  }
+
+  .solved {
+    font-size: 11px;
+  }
+
+  .streak {
+    margin-left: auto;
+  }
+}

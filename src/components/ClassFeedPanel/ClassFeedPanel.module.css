@@ -1,0 +1,188 @@
+/* ── Filters ─────────────────────────────────────────────── */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 4px 0 18px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 12.5px var(--font-ui);
+  color: var(--color-body-alt);
+  background: var(--color-surface-input);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 7px 13px;
+  min-height: 34px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter:hover:not(.filterOn) {
+  background: var(--color-surface-tint);
+  color: var(--color-ink);
+}
+
+.filterOn {
+  color: var(--color-primary);
+  background: var(--color-primary-tint-chip);
+  border-color: var(--color-primary);
+}
+
+.filterCount {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.filterOn .filterCount {
+  color: var(--color-primary);
+}
+
+/* ── Days ────────────────────────────────────────────────── */
+
+.day {
+  margin-bottom: 6px;
+}
+
+.dayHeading {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 18px 0 10px;
+}
+
+.day:first-of-type .dayHeading {
+  margin-top: 0;
+}
+
+/* ── Timeline ────────────────────────────────────────────── */
+
+.timeline {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 34px;
+}
+
+/* One rail behind the markers, so a day reads as a run of events rather than a
+   stack of unrelated cards. Inset at both ends so it doesn't dangle. */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 13px;
+  top: 12px;
+  bottom: 12px;
+  width: 2px;
+  background: var(--color-border);
+  border-radius: 1px;
+}
+
+.entry {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+.marker {
+  position: absolute;
+  left: -34px;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  line-height: 1;
+  background: var(--color-surface);
+  /* A ring rather than a border, so the marker sits cleanly over the rail. */
+  box-shadow: 0 0 0 2px var(--color-page-bg), inset 0 0 0 1.5px var(--color-border);
+}
+
+/* Each kind gets its own ring, so the column is scannable without reading it. */
+.post { box-shadow: 0 0 0 2px var(--color-page-bg), inset 0 0 0 1.5px var(--color-primary); }
+.assignment { box-shadow: 0 0 0 2px var(--color-page-bg), inset 0 0 0 1.5px var(--color-amber); }
+.material { box-shadow: 0 0 0 2px var(--color-page-bg), inset 0 0 0 1.5px var(--color-success); }
+.session { box-shadow: 0 0 0 2px var(--color-page-bg), inset 0 0 0 1.5px var(--color-skill-div); }
+
+/* ── Cards ───────────────────────────────────────────────── */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 13px 15px;
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cardHeading {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.kind {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.when {
+  font: 500 11.5px var(--font-ui);
+  color: var(--color-faint);
+}
+
+.title {
+  font: 700 14.5px var(--font-ui);
+  color: var(--color-ink);
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+
+.body {
+  font: 500 13.5px var(--font-ui);
+  color: var(--color-body);
+  line-height: 1.6;
+  margin-top: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 9px;
+}
+
+.fact {
+  font: 600 11.5px var(--font-ui);
+  color: var(--color-body-alt);
+  background: var(--color-surface-input);
+  border-radius: var(--radius-pill);
+  padding: 4px 10px;
+}
+
+@media (max-width: 520px) {
+  .timeline { padding-left: 26px; }
+  .timeline::before { left: 10px; }
+  .marker { left: -26px; width: 22px; height: 22px; font-size: 11px; }
+}

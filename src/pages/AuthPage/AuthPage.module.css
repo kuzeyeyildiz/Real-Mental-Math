@@ -1,0 +1,274 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── The pitch ──────────────────────────────────────────── */
+/* Half the screen, on the same dark surface as the practice stage. Somebody
+   arriving cold should be able to tell what this is before they sign up. */
+
+.pitch {
+  width: 470px;
+  flex: none;
+  background: var(--color-stage);
+  padding: 44px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pitchLogo {
+  margin-bottom: 4px;
+}
+
+.pitchTitle {
+  font: 800 30px/1.15 var(--font-ui);
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.pitchBody {
+  font: 500 14px/1.7 var(--font-ui);
+  color: rgba(255, 255, 255, 0.55);
+  margin: 14px 0 0;
+}
+
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin: auto 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.point {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  font: 500 13px/1.55 var(--font-ui);
+  color: var(--color-stage-text);
+}
+
+.tick {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: rgba(124, 92, 255, 0.25);
+  color: var(--color-indigo-lighter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 11px var(--font-display);
+  margin-top: 1px;
+}
+
+/* ── The form ───────────────────────────────────────────── */
+
+.formPane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: 18px;
+  padding: 32px;
+  width: 100%;
+  max-width: 430px;
+}
+
+.cardLogo {
+  display: none;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--color-surface-input);
+  border-radius: 11px;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  flex: 1;
+  font: 600 13px var(--font-ui);
+  padding: 9px;
+  border-radius: 9px;
+  transition: color 0.15s, background 0.15s;
+  color: var(--color-muted-dark);
+  background: transparent;
+  min-height: 44px;
+}
+.tabActive {
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-tab);
+}
+
+.roleRow {
+  display: flex;
+  gap: 9px;
+  margin-bottom: 18px;
+}
+
+/* Left-aligned cards, no emoji: the label and its one line of explanation are
+   what the choice actually turns on. */
+.roleBtn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  text-align: left;
+  padding: 14px;
+  border-radius: 13px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface-input);
+  transition: border-color 0.15s, background 0.15s;
+  min-height: 44px;
+}
+.roleBtnActive {
+  border-color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+.roleLabel {
+  font: 700 14px var(--font-ui);
+  color: var(--color-body);
+}
+.roleBtnActive .roleLabel {
+  color: var(--color-primary);
+}
+.roleHint {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font: 600 13px var(--font-ui);
+  color: var(--color-body);
+  margin-bottom: 6px;
+}
+
+.input {
+  width: 100%;
+  font: 500 15px var(--font-ui);
+  color: var(--color-ink);
+  background: var(--color-surface-input);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.input:focus { border-color: var(--color-primary); }
+
+.select {
+  width: 100%;
+  font: 500 15px var(--font-ui);
+  color: var(--color-ink);
+  background: var(--color-surface-input);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  outline: none;
+  cursor: pointer;
+}
+.select:focus { border-color: var(--color-primary); }
+
+.submit {
+  width: 100%;
+  font: 700 16px var(--font-ui);
+  color: var(--color-surface);
+  background: var(--color-primary);
+  border-radius: var(--radius-input);
+  padding: 15px;
+  margin-top: 8px;
+  transition: background 0.15s;
+  min-height: 48px;
+}
+.submit:hover:not(:disabled) { background: var(--color-primary-hover); }
+.submit:disabled { opacity: 0.6; cursor: default; }
+
+.error {
+  background: var(--color-error-tint);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font: 600 13px var(--font-ui);
+  margin-bottom: 16px;
+  line-height: 1.45;
+}
+
+.notice {
+  background: var(--color-primary-tint-alt);
+  color: var(--color-body);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  font: 500 14px var(--font-ui);
+  line-height: 1.55;
+  text-align: center;
+}
+.noticeTitle {
+  display: block;
+  font: 700 16px var(--font-ui);
+  color: var(--color-primary);
+  margin-bottom: 6px;
+}
+
+.footHint {
+  text-align: center;
+  margin-top: 18px;
+  font: 500 13px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.linkBtn {
+  color: var(--color-primary);
+  font: 600 13px var(--font-ui);
+  background: none;
+  padding: 0;
+}
+.linkBtn:hover { text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tab, .roleBtn, .input, .submit { transition: none; }
+}
+
+/* The dark half is context, not content — below this it would push the form
+   itself off the first screen, so it goes and the form takes the width. */
+@media (max-width: 860px) {
+  .page {
+    display: block;
+  }
+
+  .pitch {
+    display: none;
+  }
+
+  .formPane {
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+
+  .cardLogo {
+    display: flex;
+  }
+}

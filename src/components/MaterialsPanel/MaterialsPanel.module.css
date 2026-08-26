@@ -1,0 +1,51 @@
+/* Topic filters. Deliberately not the shared `.tabs` control — these are a
+   narrowing of one list, not navigation between different views, and they wrap. */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 4px 0 14px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 12.5px var(--font-ui);
+  color: var(--color-body-alt);
+  background: var(--color-surface-input);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  padding: 7px 13px;
+  min-height: 34px;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter:hover:not(.filterOn) {
+  background: var(--color-surface-tint);
+  color: var(--color-ink);
+}
+
+.filterOn {
+  color: var(--color-primary);
+  background: var(--color-primary-tint-chip);
+  border-color: var(--color-primary);
+}
+
+.filterCount {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.filterOn .filterCount {
+  color: var(--color-primary);
+}
+
+.cardActions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}

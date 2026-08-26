@@ -1,0 +1,75 @@
+/*
+ * Hidden entirely on anything with room for a real keyboard. The panel is a
+ * flex column, so the pad takes what is left and pins its action to the bottom.
+ */
+.keypad {
+  display: none;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+
+.key {
+  min-height: 46px;
+  border-radius: 13px;
+  font: 700 21px var(--font-display);
+  color: #fff;
+  background: var(--color-stage-raise);
+  border: 1px solid var(--color-stage-line);
+  transition: background 0.12s;
+}
+
+.key:active {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.keyAlt {
+  color: var(--color-stage-text);
+  font-size: 18px;
+}
+
+.keyGo {
+  color: var(--color-indigo-lighter);
+  background: var(--color-stage-accent-tint);
+  border-color: transparent;
+}
+
+.key:disabled {
+  opacity: 0.4;
+}
+
+.submit {
+  margin-top: auto;
+  font: 700 16px var(--font-ui);
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: 13px;
+  min-height: 48px;
+  padding: 12px;
+}
+
+.submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 620px) {
+  .keypad {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* So the pad can shrink inside the panel's flex column rather than pushing
+       the question off the top of the screen. */
+    min-height: 0;
+    flex: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none;
+  }
+}

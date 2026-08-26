@@ -1,0 +1,715 @@
+/* ── Top-bar buttons ────────────────────────────────────── */
+
+.barBtn,
+.barBtnGhost {
+  font: 700 13px var(--font-ui);
+  border-radius: var(--radius-nav);
+  padding: 9px 15px;
+  min-height: 38px;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.barBtn {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.barBtn:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.barBtnGhost {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.barBtnGhost:hover:not(:disabled) {
+  background: var(--color-indigo-lighter);
+}
+
+/* ── The rail's classroom card ──────────────────────────── */
+
+.classroomCard {
+  background: var(--color-surface-input);
+  border-radius: 13px;
+  padding: 12px 13px;
+}
+
+.classroomLabel {
+  font: 700 10px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  margin-bottom: 6px;
+}
+
+.classroomName {
+  font: 700 14px var(--font-ui);
+  color: var(--color-ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.classroomSelect {
+  width: 100%;
+  font: 700 14px var(--font-ui);
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 2px 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.codeChip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+}
+
+.codeValue {
+  font: 700 13px var(--font-display);
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
+
+.copyBtn {
+  font: 600 11px var(--font-ui);
+  color: var(--color-primary);
+  background: transparent;
+  padding: 2px 4px;
+}
+
+.copyBtn:hover {
+  text-decoration: underline;
+}
+
+.classroomMeta {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  margin-top: 8px;
+}
+
+/* ── Create a class ─────────────────────────────────────── */
+
+.createCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: var(--radius-card);
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.createRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.createInput {
+  flex: 1 1 240px;
+  min-width: 0;
+  font: 600 15px var(--font-ui);
+  color: var(--color-ink);
+  background: var(--color-surface-input);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  outline: none;
+}
+
+.createInput:focus { border-color: var(--color-primary); }
+
+.createBtn {
+  font: 700 15px var(--font-ui);
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  min-height: 46px;
+  transition: background 0.15s;
+}
+
+.createBtn:hover:not(:disabled) { background: var(--color-primary-hover); }
+.createBtn:disabled { opacity: 0.6; }
+
+.emptyState {
+  font: 500 14px var(--font-ui);
+  color: var(--color-muted);
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 30px 22px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.error {
+  background: var(--color-error-tint);
+  color: var(--color-error);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  font: 600 13px var(--font-ui);
+  margin-bottom: 16px;
+}
+
+.errorRetry {
+  font: 700 13px var(--font-ui);
+  color: var(--color-error);
+  text-decoration: underline;
+}
+
+/* Leaving the inbox is ordinary navigation, so it must not borrow the red of
+   the retry link beside it. */
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: 600 13px var(--font-ui);
+  color: var(--color-muted-alt);
+  background: transparent;
+  padding: 8px 12px 8px 0;
+  min-height: 38px;
+  border-radius: var(--radius-sm);
+}
+
+.backLink:hover {
+  color: var(--color-primary);
+}
+
+.inboxBody {
+  margin-top: 18px;
+}
+
+/* ── Stat strip ─────────────────────────────────────────── */
+
+.statStrip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: var(--radius-card);
+  padding: 16px 18px;
+  min-width: 0;
+}
+
+.statValue {
+  font: 700 26px var(--font-display);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+/* Only ever the count of students who have gone quiet. */
+.statValueAlert {
+  color: var(--color-error);
+}
+
+.statLabel {
+  font: 600 12px var(--font-ui);
+  color: var(--color-muted);
+  margin-top: 5px;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+/* ── Roster table ───────────────────────────────────────── */
+
+.tableCard {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.tableHead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 18px 20px 14px;
+}
+
+.tableTitle {
+  font: 800 15px var(--font-ui);
+  color: var(--color-ink);
+}
+
+.tableSub {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  margin-top: 2px;
+  line-height: 1.5;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.filterChip {
+  font: 600 12px var(--font-ui);
+  color: var(--color-muted-dark);
+  background: var(--color-surface-input);
+  border-radius: 8px;
+  padding: 7px 12px;
+  min-height: 34px;
+  white-space: nowrap;
+  transition: background 0.14s, color 0.14s;
+}
+
+.filterChip:hover:not(.filterChipOn) {
+  color: var(--color-ink);
+}
+
+.filterChipOn {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.filterEmpty {
+  font: 500 13px var(--font-ui);
+  color: var(--color-muted);
+  padding: 20px;
+  text-align: center;
+}
+
+/* The roster is the one wide thing on the page; it scrolls inside its own card
+   rather than forcing the whole dashboard sideways. */
+.tableScroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  font: 700 10px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 11px 20px;
+  background: #fafafd;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-rail-border);
+  white-space: nowrap;
+}
+
+.table td {
+  font: 500 13px var(--font-ui);
+  color: var(--color-body);
+  padding: 13px 20px;
+  border-bottom: 1px solid #f4f4f9;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.studentCell {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.rosterAvatar {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 12px var(--font-ui);
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+/* Quiet for a week or more — the same rule the analytics panel applies. */
+.rosterAvatarQuiet {
+  color: var(--color-error);
+  background: var(--color-error-tint);
+}
+
+.studentName {
+  font: 700 14px var(--font-ui);
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.studentGrade {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.levelTag {
+  display: inline-block;
+  font: 700 10px var(--font-ui);
+  border-radius: 7px;
+  padding: 4px 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.tagBeginner {
+  color: var(--color-amber-dark);
+  background: var(--color-amber-tint);
+}
+
+.tagIntermediate {
+  color: var(--color-success-deep);
+  background: var(--color-success-tint);
+}
+
+.tagExpert {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.tagMaster {
+  color: var(--color-skill-div);
+  background: var(--color-primary-tint-chip);
+}
+
+.tagUntested {
+  color: var(--color-muted-dark);
+  background: var(--color-surface-input);
+}
+
+.levelCells {
+  display: flex;
+  gap: 4px;
+}
+
+.miniLevel {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font: 700 11px var(--font-display);
+  color: #fff;
+  border-radius: 7px;
+  padding: 4px 7px;
+  font-variant-numeric: tabular-nums;
+}
+
+.spark {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 24px;
+}
+
+/* A day with no XP keeps its slot as a flat tick, so the column always reads as
+   seven days rather than however many the student happened to work. */
+.sparkBar {
+  width: 5px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-border-light);
+  display: block;
+}
+
+.sparkBarOn {
+  background: var(--color-primary);
+}
+
+.xpCell {
+  font: 700 13px var(--font-display);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.lastActive {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.lastActiveQuiet {
+  font: 500 12px var(--font-ui);
+  color: var(--color-error);
+  white-space: nowrap;
+}
+
+.rosterRow {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.rosterRow:hover,
+.rosterRow:focus-visible {
+  background: var(--color-row-hover);
+  outline: none;
+}
+
+/* ── Analytics extras ───────────────────────────────────── */
+
+.rangeTrack {
+  position: relative;
+  height: 9px;
+  overflow: visible;
+}
+
+/* The lowest and highest level in the class, over the average fill. */
+.rangeTick {
+  position: absolute;
+  top: -3px;
+  width: 2px;
+  height: 15px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.nudgeList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.nudgeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.nudgeAvatar {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-surface-input);
+  color: var(--color-body-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 11px var(--font-ui);
+}
+
+.nudgeName {
+  font: 700 13px var(--font-ui);
+  color: var(--color-ink);
+  flex: 1;
+  min-width: 0;
+}
+
+.nudgeMeta {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.composer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.completionList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+/* ── Settings dialog ────────────────────────────────────── */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(20, 20, 50, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.sheet {
+  background: var(--color-surface);
+  border-radius: var(--radius-panel);
+  padding: 24px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.sheetHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.sheetTitle {
+  font: 800 18px var(--font-ui);
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.sheetSub {
+  font: 500 13px var(--font-ui);
+  color: var(--color-muted);
+  margin: 3px 0 0;
+}
+
+.sheetClose {
+  font: 600 13px var(--font-ui);
+  color: var(--color-muted-alt);
+  padding: 8px 12px;
+  min-height: 38px;
+  border-radius: var(--radius-sm);
+}
+
+.sheetClose:hover {
+  background: var(--color-surface-input);
+  color: var(--color-ink);
+}
+
+/* ── Per-class settings ─────────────────────────────────── */
+/* Holds the class's privacy switches — placement visibility and the two
+   leaderboard controls — stacked so each hint sits under its own switch. */
+.settingRow {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px 0 4px;
+}
+
+.switchLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.switchInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switchTrack {
+  flex-shrink: 0;
+  position: relative;
+  width: 40px;
+  height: 23px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+  transition: background 0.18s;
+  margin-top: 1px;
+}
+
+.switchThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  box-shadow: 0 1px 3px rgba(20, 20, 50, 0.28);
+  transition: transform 0.18s;
+}
+
+.switchInput:checked + .switchTrack {
+  background: var(--color-primary);
+}
+
+.switchInput:checked + .switchTrack .switchThumb {
+  transform: translateX(17px);
+}
+
+.switchInput:focus-visible + .switchTrack {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.switchInput:disabled + .switchTrack {
+  opacity: 0.55;
+}
+
+.switchText {
+  font: 600 13px var(--font-ui);
+  color: var(--color-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.switchHint {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .switchTrack,
+  .switchThumb,
+  .rosterRow,
+  .filterChip,
+  .barBtn,
+  .barBtnGhost { transition: none; }
+}
+
+@media (max-width: 1100px) {
+  .statStrip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .statStrip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .statCard {
+    padding: 12px 14px;
+  }
+
+  .statValue {
+    font-size: 21px;
+  }
+
+  .tableHead {
+    padding: 14px 14px 12px;
+  }
+
+  .filters {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .filterChip {
+    flex: 1;
+  }
+}

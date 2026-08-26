@@ -1,0 +1,79 @@
+.card {
+  background: var(--color-surface-input);
+  border-radius: var(--radius-input);
+  padding: 14px;
+}
+
+.label {
+  font: 700 10px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+}
+
+.levelBadge {
+  display: inline-block;
+  font: 700 11px var(--font-ui);
+  color: var(--color-surface);
+  background: var(--color-success);
+  border-radius: 6px;
+  padding: 4px 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.text {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted-dark);
+  line-height: 1.55;
+  margin: 6px 0 0;
+}
+
+.scoreRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.scoreValue {
+  font: 700 24px var(--font-display);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreTotal {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.bar {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+  margin-top: 9px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--color-success);
+  border-radius: var(--radius-pill);
+}
+
+/* The offer stays open for anyone who skipped it, rather than being lost at
+   sign-up — this is the standing way back in. */
+.cta {
+  display: inline-block;
+  margin-top: 10px;
+  font: 700 12px var(--font-ui);
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 1px;
+}
+
+.cta:hover {
+  color: var(--color-primary-hover);
+}

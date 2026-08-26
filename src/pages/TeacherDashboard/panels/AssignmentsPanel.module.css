@@ -1,0 +1,108 @@
+/* The question authoring table. A grid rather than a flex row so the answer and
+   skill columns line up down the list, which is what makes a long set scannable. */
+.questions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.question {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr) 110px 150px auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.questionNumber {
+  font: 700 12px var(--font-ui);
+  color: var(--color-muted);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.questionPrompt,
+.questionAnswer,
+.questionArea {
+  min-width: 0;
+}
+
+.questionAnswer {
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* Below this the five columns stop fitting, so the row becomes a small stack
+   with the number as its heading. */
+@media (max-width: 760px) {
+  .question {
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    grid-template-areas:
+      'num prompt remove'
+      '.   answer area';
+    row-gap: 6px;
+  }
+
+  .questionNumber { grid-area: num; }
+  .questionPrompt { grid-area: prompt; }
+  .questionAnswer { grid-area: answer; text-align: left; }
+  .questionArea { grid-area: area; }
+  .question > button { grid-area: remove; }
+}
+
+/* ── Where the questions come from ──────────────────────── */
+/* The one choice that decides what the rest of the form asks for, so each
+   option carries its own explanation rather than swapping one hint below. */
+
+.kinds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+}
+
+.kindCard {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface-input);
+  border-radius: 13px;
+  padding: 13px;
+  min-height: 44px;
+  transition: border-color 0.14s, background 0.14s;
+}
+
+.kindCard:hover:not(.kindCardOn) {
+  border-color: var(--color-indigo-lighter);
+}
+
+.kindCardOn {
+  border-color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.kindLabel {
+  font: 700 13px var(--font-ui);
+  color: var(--color-ink);
+}
+
+.kindCardOn .kindLabel {
+  color: var(--color-primary);
+}
+
+.kindBlurb {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kindCard { transition: none; }
+}
+
+@media (max-width: 720px) {
+  .kinds { grid-template-columns: minmax(0, 1fr); }
+}

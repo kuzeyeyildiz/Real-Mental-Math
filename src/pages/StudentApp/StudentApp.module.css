@@ -1,0 +1,29 @@
+/*
+ * Progress is two panels, not two tabs. Above 1100px the league standings sit
+ * beside the badge wall — a student should be able to see how close the next
+ * badge is and where they are in the table without choosing between them.
+ */
+.progress {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.progressMain,
+.progressSide {
+  min-width: 0;
+}
+
+@media (max-width: 1100px) {
+  .progress {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Below this the segmented control in the top bar takes over, so exactly one
+     of the two is on screen at a time. */
+  .progress[data-tab='badges'] .progressSide,
+  .progress[data-tab='league'] .progressMain {
+    display: none;
+  }
+}

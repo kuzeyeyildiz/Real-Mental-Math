@@ -1,0 +1,34 @@
+/* 16:9 with no aspect-ratio-box trickery — every browser Numo supports has
+   `aspect-ratio`, and the intrinsic box keeps the frame from jumping as it loads. */
+.frame {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+  margin: 12px 0;
+}
+
+.iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.fallback {
+  display: inline-block;
+  margin: 10px 0;
+  font: 700 13px var(--font-ui);
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+}
+
+.fallback:hover {
+  color: var(--color-primary-hover);
+}

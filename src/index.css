@@ -1,0 +1,216 @@
+/* ── Design Tokens ──────────────────────────────────────── */
+:root {
+  /* Brand */
+  --color-primary: #4b40d6;
+  --color-primary-hover: #3f35c0;
+  --color-primary-tint: #edecfd;
+  --color-primary-tint-alt: #f4f6ff;
+  --color-primary-tint-chip: #f3f2fd;
+  --color-indigo-light: #a59bff;
+  --color-indigo-lighter: #c9c3ff;
+
+  /* Success */
+  --color-success: #0e9d6e;
+  --color-success-deep: #0b7d57;
+  --color-success-tint: #eafaf3;
+
+  /* Error */
+  --color-error: #e0436b;
+  --color-error-tint: #fdeef2;
+  --color-error-tint-alt: #fbf3f6;
+
+  /* Amber */
+  --color-amber: #e6962a;
+  --color-amber-dark: #b9791b;
+  --color-amber-tint: #fbf0dd;
+
+  /* Text */
+  --color-ink: #1b1d2a;
+  --color-body: #3a3d57;
+  --color-body-alt: #5a5d76;
+  --color-muted: #9a9db2;
+  --color-muted-alt: #9295ab;
+  --color-muted-dark: #8a8da3;
+  --color-faint: #c3c5d4;
+  --color-tip-wrong: #5a3a45;
+  --color-hint: #a9abbe;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-tint: #f6f5ff;
+  --color-surface-sidebar: #f7f6fc;
+  --color-surface-input: #f7f7fb;
+  --color-page-bg: #f2f2f7;
+  --color-dark-surface: #16172a;
+
+  /* Shell — the rail and the top bar are the only chrome, so they carry the
+     depth the page background used to provide. */
+  --color-rail: #ffffff;
+  --color-rail-border: #ebebf2;
+  --color-row-hover: #fafafd;
+
+  /* The practice stage. Arithmetic is the brightest thing on screen, so it sits
+     on the dark surface and everything on it is expressed against that. */
+  --color-stage: #16172a;
+  --color-stage-raise: rgba(255, 255, 255, 0.07);
+  --color-stage-line: rgba(255, 255, 255, 0.09);
+  --color-stage-text: rgba(255, 255, 255, 0.62);
+  --color-stage-muted: rgba(255, 255, 255, 0.45);
+  --color-stage-accent: #7c5cff;
+  --color-stage-accent-tint: rgba(124, 92, 255, 0.22);
+  /* Success on the dark stage only — the light-surface green is unreadable there. */
+  --color-success-bright: #6ee7b7;
+
+  /* Borders */
+  --color-border: #e8e9f1;
+  --color-border-sidebar: #eeedf6;
+  --color-border-quest: #ece9fb;
+  --color-border-light: #f0f0f6;
+  --color-border-wrong: #f7d6e0;
+
+  /* Badge tiers. Gold and Legend borrow amber and the brand colour; bronze and
+     silver have no equivalent elsewhere, so they are named here rather than
+     repeated in each component that now draws a tier. */
+  --color-tier-bronze: #7c4a1e;
+  --color-tier-bronze-tint: #f6e6d5;
+  --color-tier-silver: #4b5563;
+  --color-tier-silver-tint: #e8ebef;
+
+  /* Skill colors */
+  --color-skill-add: #4b40d6;
+  --color-skill-sub: #0e9d6e;
+  --color-skill-mul: #e6962a;
+  --color-skill-div: #7c5cff;
+
+  /* Typography */
+  --font-ui: 'Albert Sans', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+
+  /* Radii */
+  --radius-sm: 9px;
+  --radius-tile: 7px;
+  --radius-nav: 10px;
+  --radius-md: 12px;
+  --radius-input: 14px;
+  --radius-card: 16px;
+  --radius-stage: 20px;
+  --radius-panel: 22px;
+  --radius-panel-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(20, 20, 50, 0.08), 0 14px 34px rgba(20, 20, 50, 0.05);
+  --shadow-logo: 0 6px 18px rgba(75, 64, 214, 0.32);
+  --shadow-tab: 0 1px 3px rgba(20, 20, 50, 0.1);
+}
+
+/* ── Motion ─────────────────────────────────────────────── */
+@keyframes pop {
+  0% { transform: scale(0.97); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  /* Flat: the rail, the top bar and the dark stage carry the depth now, and a
+     gradient behind all three only muddied where one surface ended. */
+  background: var(--color-page-bg);
+  background-image: none;
+  min-height: 100vh;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: var(--font-ui);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: var(--font-display);
+}
+
+input::placeholder {
+  color: var(--color-faint);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Unsaved-progress banner ────────────────────────────── */
+.numo-save-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 16px;
+  font: 600 13px var(--font-ui);
+  color: var(--color-error);
+  background: var(--color-error-tint);
+  border-bottom: 1px solid var(--color-border-wrong);
+}
+
+.numo-save-banner button {
+  font: 600 13px var(--font-ui);
+  color: var(--color-error);
+  text-decoration: underline;
+}
+
+/* ── Shared app layout helpers ──────────────────────────── */
+/* The rail now takes 240px of the window, so the content column is measured
+   from what is left rather than centred in the whole page. */
+.numo-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 24px 40px;
+}
+
+/* Kept for the screens that need extra separation from the bar above them. */
+.numo-section-top {
+  padding-top: 24px;
+}
+
+.numo-focus-stage {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* A control that only earns its place once the screen is too narrow to show
+   both of the things it switches between. */
+@media (min-width: 1101px) {
+  .numo-narrow-only {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .numo-section {
+    padding: 16px 14px 32px;
+  }
+
+  .numo-focus-stage {
+    padding: 14px;
+  }
+}
+
+/* ── Focus ──────────────────────────────────────────────── */
+/* Keyboard users get the same affordance everywhere, rather than whatever each
+   control happened to inherit. */
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

@@ -1,0 +1,286 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-page-bg);
+  padding: 28px 16px 56px;
+}
+
+.wrap {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.signOut {
+  font: 600 13px var(--font-ui);
+  color: var(--color-muted-alt);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  min-height: 38px;
+}
+
+.signOut:hover {
+  background: var(--color-surface);
+  color: var(--color-body);
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 4px 2px;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 800 21px var(--font-display);
+  box-shadow: var(--shadow-logo);
+}
+
+.heroText {
+  min-width: 0;
+}
+
+.title {
+  font: 800 clamp(24px, 4vw, 30px) var(--font-ui);
+  color: var(--color-ink);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font: 500 14px var(--font-ui);
+  color: var(--color-body-alt);
+  line-height: 1.55;
+  margin-top: 4px;
+}
+
+/* ── Cards ───────────────────────────────────────────────── */
+
+/* The same card the rest of the app uses now: a hairline border rather than a
+   drop shadow, on the flat page background. */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rail-border);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.cardTitle {
+  font: 800 16px var(--font-ui);
+  color: var(--color-ink);
+  margin-bottom: 14px;
+}
+
+.body {
+  font: 500 13.5px var(--font-ui);
+  color: var(--color-body-alt);
+  line-height: 1.6;
+}
+
+/* ── Details ─────────────────────────────────────────────── */
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.detail {
+  background: var(--color-surface-input);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.detail dt {
+  font: 600 11px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.detail dd {
+  font: 700 14px var(--font-ui);
+  color: var(--color-ink);
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.detailNote {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.55;
+  margin-top: 12px;
+}
+
+/* ── Assessment summary ──────────────────────────────────── */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: var(--color-primary-tint-alt);
+  border-radius: var(--radius-md);
+  padding: 14px 8px;
+}
+
+.statValue {
+  font: 800 22px var(--font-display);
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.statLabel {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted-dark);
+}
+
+.tierList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 16px 0;
+  list-style: none;
+}
+
+.tierRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--color-surface-input);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+}
+
+.tierName {
+  font: 700 12px var(--font-ui);
+  color: var(--color-body);
+}
+
+.tierCount {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.privacyNote {
+  font: 500 12.5px var(--font-ui);
+  color: var(--color-muted-dark);
+  line-height: 1.6;
+  background: var(--color-primary-tint-chip);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.startBtn {
+  width: 100%;
+  font: 700 15px var(--font-ui);
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: 14px 24px;
+  min-height: 50px;
+  transition: background 0.15s;
+}
+
+.startBtn:hover {
+  background: var(--color-primary-hover);
+}
+
+.startBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ── The choice ──────────────────────────────────────────── */
+
+/* Recommended is stated, not implied by making the alternative hard to find. */
+.recommend {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font: 700 12px var(--font-ui);
+  color: var(--color-success-deep);
+  background: var(--color-success-tint);
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  margin-bottom: 12px;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skipBtn {
+  width: 100%;
+  font: 600 13.5px var(--font-ui);
+  color: var(--color-body-alt);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  min-height: 46px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.skipBtn:hover:not(:disabled) {
+  background: var(--color-surface-input);
+  color: var(--color-ink);
+}
+
+.skipBtn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.skipNote {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.55;
+  text-align: center;
+}
+
+.error {
+  font: 600 12.5px var(--font-ui);
+  color: var(--color-error);
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+@media (max-width: 520px) {
+  .hero { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .card { padding: 18px; }
+}

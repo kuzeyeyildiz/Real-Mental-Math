@@ -1,0 +1,460 @@
+.shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── Rail ───────────────────────────────────────────────── */
+
+.rail {
+  width: 240px;
+  flex: none;
+  background: var(--color-rail);
+  border-right: 1px solid var(--color-rail-border);
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  /* A full-height column, not a card that stops where its content does — the
+     rail is the edge of the app, so it has to reach the bottom of the window. */
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.brand {
+  padding: 0 6px;
+}
+
+.railTop,
+.railFooter {
+  min-width: 0;
+}
+
+/* Pushed down so the rail always reads bottom-anchored, however short the nav. */
+.railFooter {
+  margin-top: auto;
+}
+
+/* ── Primary navigation ─────────────────────────────────── */
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navSlot {
+  display: contents;
+}
+
+.navGroup {
+  font: 700 10px var(--font-ui);
+  color: #b6b8c8;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  padding: 14px 12px 8px;
+}
+
+/* The first heading sits directly under the logo, which already provides the
+   gap the rule above is meant to open. */
+.navSlot:first-child .navGroup {
+  padding-top: 0;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  text-align: left;
+  font: 600 14px var(--font-ui);
+  color: var(--color-body-alt);
+  background: transparent;
+  padding: 10px 12px;
+  min-height: 42px;
+  border-radius: var(--radius-nav);
+  transition: background 0.15s, color 0.15s;
+}
+
+.navItem:hover:not(.navItemActive) {
+  background: var(--color-row-hover);
+  color: var(--color-ink);
+}
+
+.navItemActive,
+.navItemActive:hover {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+.navTile {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-tile);
+  background: var(--color-border-light);
+  color: var(--color-muted-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 12px var(--font-display);
+  line-height: 1;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navItemActive .navTile {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.navLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navCount {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.navBadge {
+  font: 700 11px var(--font-ui);
+  color: var(--color-error);
+  background: var(--color-error-tint);
+  border-radius: var(--radius-pill);
+  padding: 2px 7px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Top bar ────────────────────────────────────────────── */
+
+.topBar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 62px;
+  padding: 0 24px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-rail-border);
+}
+
+.title {
+  font: 800 17px var(--font-ui);
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+.subtitle {
+  font: 500 13px var(--font-ui);
+  color: var(--color-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Segmented sub-navigation ───────────────────────────── */
+
+.segmented {
+  display: flex;
+  gap: 2px;
+  background: var(--color-surface-input);
+  border-radius: var(--radius-nav);
+  padding: 3px;
+}
+
+.segment {
+  font: 600 13px var(--font-ui);
+  color: var(--color-muted-dark);
+  background: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  min-height: 34px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.segment:hover:not(.segmentOn) {
+  color: var(--color-ink);
+}
+
+.segmentOn,
+.segmentOn:hover {
+  font-weight: 700;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-tab);
+}
+
+/* ── Account block ──────────────────────────────────────── */
+
+.account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.streakChip,
+.xpChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: var(--radius-pill);
+  padding: 6px 12px;
+  font-weight: 700;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.streakChip {
+  font-family: var(--font-ui);
+  color: var(--color-amber-dark);
+  background: var(--color-amber-tint);
+}
+
+.streakDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-amber);
+}
+
+.xpChip {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+  font-variant-numeric: tabular-nums;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font: 700 13px var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signOut {
+  font: 600 13px var(--font-ui);
+  color: var(--color-muted-alt);
+  padding: 8px 12px;
+  min-height: 38px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.signOut:hover {
+  background: var(--color-surface-input);
+  color: var(--color-ink);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ * Under this width a 240px rail leaves too little room for a practice stage, so
+ * the same <nav> moves to a bar along the bottom — where it is also easier to
+ * reach on a tablet. `display: contents` dissolves the rail's box without
+ * removing the nav from the DOM, so there is one set of buttons either way and
+ * nothing is announced twice.
+ */
+@media (max-width: 900px) {
+  .shell {
+    flex-direction: column;
+  }
+
+  .rail {
+    display: contents;
+  }
+
+  /*
+   * The rail's own boxes stack around the content rather than disappearing —
+   * the classroom switcher and the placement block are not decoration, and a
+   * phone must not be the one place they cannot be reached.
+   */
+  /* Reads as part of the header stack rather than as a card floating above it. */
+  .railTop {
+    order: 1;
+    padding: 14px;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-rail-border);
+  }
+
+  .column {
+    order: 2;
+  }
+
+  .railFooter {
+    order: 3;
+    margin-top: 0;
+    padding: 0 14px 14px;
+  }
+
+  .brand,
+  .navGroup,
+  .navCount {
+    display: none;
+  }
+
+  /*
+   * The teacher has seven destinations and a phone is 375px wide, so the bar
+   * scrolls inside itself rather than truncating labels to three letters — and
+   * because the scroll is the bar's, not the document's, the page still never
+   * moves sideways.
+   */
+  .nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30;
+    flex-direction: row;
+    gap: 0;
+    padding: 8px 4px calc(14px + env(safe-area-inset-bottom, 0px));
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-rail-border);
+    box-shadow: 0 -2px 14px rgba(20, 20, 50, 0.07);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navItem {
+    /* `width: 100%` is right in the rail and disastrous here: it becomes the
+       flex basis, so every destination would be a screen wide. */
+    width: auto;
+    flex: 1 0 auto;
+    min-width: 68px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 5px 6px;
+    min-height: 54px;
+    border-radius: var(--radius-md);
+    font-size: 10px;
+    justify-content: center;
+    position: relative;
+  }
+
+  .navTile {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .navLabel {
+    flex: none;
+    font-weight: 600;
+  }
+
+  /* No room for a number down here, so it becomes a dot on the tile. */
+  .navBadge {
+    position: absolute;
+    top: 2px;
+    right: 50%;
+    margin-right: -20px;
+    padding: 1px 5px;
+    font-size: 10px;
+  }
+
+  .topBar {
+    gap: 10px;
+    padding: 0 14px;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  /* Keeps the last few lines of a page clear of the bar. */
+  .mainWithBar {
+    padding-bottom: 82px;
+  }
+}
+
+/*
+ * Nothing is dropped here — the bar wraps instead. Sign out in particular stays
+ * reachable: a shared classroom tablet is exactly where someone needs it.
+ */
+@media (max-width: 620px) {
+  .topBar {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .segmented {
+    order: 3;
+    width: 100%;
+  }
+
+  .segment {
+    flex: 1;
+  }
+
+  /* Wraps rather than clipping: every one of these is a control, and Sign out
+     in particular has to stay reachable on a shared classroom tablet. */
+  .account {
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .streakChip,
+  .xpChip {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .signOut {
+    padding: 8px 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navItem,
+  .navTile,
+  .segment,
+  .signOut {
+    transition: none;
+  }
+}

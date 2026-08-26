@@ -1,0 +1,240 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(20, 20, 50, 0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fade 0.15s ease-out;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 560px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  background: var(--color-surface);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: rise 0.2s ease-out;
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 16px var(--font-display);
+}
+
+.name {
+  font: 700 17px var(--font-ui);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+.close {
+  flex-shrink: 0;
+  font: 600 15px var(--font-ui);
+  color: var(--color-muted);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+}
+
+.close:hover {
+  background: var(--color-surface-input);
+  color: var(--color-ink);
+}
+
+/* ── Stats ───────────────────────────────────────────────── */
+
+.statRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: var(--color-surface-input);
+  border-radius: var(--radius-md);
+  padding: 12px 6px;
+  text-align: center;
+}
+
+.statValue {
+  font: 700 16px var(--font-display);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.statOutOf {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.statLabel {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+}
+
+/* ── Skills ──────────────────────────────────────────────── */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionTitle {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
+}
+
+.skillHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.skillName {
+  font: 600 13px var(--font-ui);
+  color: var(--color-body);
+}
+
+.skillLevel {
+  font: 800 12px var(--font-ui);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+}
+
+.skillFoot {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  margin-top: 5px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Feedback ────────────────────────────────────────────── */
+
+.feedbackForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.feedbackList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  /* A long history should scroll inside the sheet, not stretch it off-screen. */
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.feedbackItem {
+  background: var(--color-surface-input);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+}
+
+.feedbackMeta {
+  font: 600 11px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 5px;
+}
+
+.feedbackBody {
+  font: 500 13px var(--font-ui);
+  color: var(--color-body);
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.foot {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes rise {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop, .sheet { animation: none; }
+}
+
+@media (max-width: 520px) {
+  .statRow { grid-template-columns: repeat(2, 1fr); }
+  .sheet { padding: 18px; }
+}

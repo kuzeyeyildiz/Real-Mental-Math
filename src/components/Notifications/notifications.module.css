@@ -1,0 +1,137 @@
+/* The bell lives in the app header; the list is a normal panel body. */
+
+.bell {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transition: background 0.15s;
+}
+
+.bell:hover {
+  background: var(--color-primary-tint-chip);
+}
+
+.bellActive {
+  background: var(--color-primary-tint);
+}
+
+.bellIcon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.bellCount {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: var(--radius-pill);
+  background: var(--color-error);
+  color: #fff;
+  font: 700 10px var(--font-ui);
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Sits over the header background, so it needs its own edge to stay legible. */
+  box-shadow: 0 0 0 2px var(--color-surface);
+}
+
+.headActions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dayHeading {
+  font: 700 11px var(--font-ui);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 13px 14px;
+}
+
+.itemUnread {
+  border-color: var(--color-indigo-lighter);
+  background: var(--color-primary-tint-alt);
+}
+
+.icon {
+  font-size: 19px;
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+
+.itemText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.itemTitle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font: 700 14px var(--font-ui);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+}
+
+.dot {
+  flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.itemBody {
+  font: 500 13px var(--font-ui);
+  color: var(--color-body);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  /* Bodies are free text a teacher or classmate wrote; keep a long one from
+     turning the inbox into a wall. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.itemTime {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bell { transition: none; }
+}

@@ -1,0 +1,304 @@
+.tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  font: 700 13px var(--font-ui);
+  color: var(--color-muted);
+  background: transparent;
+  border-radius: var(--radius-pill);
+  padding: 7px 14px;
+  min-height: 36px;
+}
+
+.tab:hover:not(:disabled) {
+  background: var(--color-surface-tint);
+  color: var(--color-ink);
+}
+
+.tabOn {
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+
+/* ── Tier banner ────────────────────────────────────────── */
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  flex-wrap: wrap;
+}
+
+.tierIcon {
+  font-size: 34px;
+  line-height: 1;
+}
+
+.tierText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 11rem;
+}
+
+.tierName {
+  font: 800 18px var(--font-display);
+}
+
+.tierSub {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.5;
+}
+
+.countdown {
+  font: 700 12px var(--font-ui);
+  color: var(--color-muted);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-tint);
+  white-space: nowrap;
+}
+
+/* A ladder reads better as a bar than as loose dots: one segment per tier, so
+   how far up the whole ladder this is stays visible. */
+.tierDots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.dot {
+  flex: 1;
+  height: 5px;
+  border-radius: var(--radius-pill);
+  background: var(--color-border);
+}
+
+.dotOn {
+  background: var(--color-primary);
+}
+
+/* Tiers that don't exist yet at this player count, rather than tiers missed. */
+.dotLocked {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+/* ── Standings ──────────────────────────────────────────── */
+
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.zoneBar {
+  font: 700 10px var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-bottom: 3px;
+}
+
+.zonePromotion {
+  color: var(--color-success-deep);
+  background: var(--color-success-tint);
+}
+
+.zoneDemotion {
+  color: var(--color-error);
+  background: var(--color-error-tint);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 11px;
+  border-radius: 11px;
+  border: 1px solid var(--color-rail-border);
+  background: var(--color-surface);
+}
+
+.rowMe {
+  background: var(--color-primary-tint);
+  border-color: var(--color-indigo-lighter);
+}
+
+.position {
+  font: 700 12px var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+  min-width: 2.2ch;
+  text-align: right;
+}
+
+.rowMe .position {
+  color: var(--color-primary);
+}
+
+.medal {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.name {
+  font: 600 13px var(--font-ui);
+  color: var(--color-ink);
+  flex: 1;
+  overflow-wrap: anywhere;
+}
+
+.rowMe .name {
+  font-weight: 700;
+}
+
+.youTag {
+  font: 700 11px var(--font-ui);
+  color: var(--color-primary);
+  padding: 2px 7px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+}
+
+.xp {
+  font: 700 12px var(--font-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-body-alt);
+  white-space: nowrap;
+}
+
+.xpUnit {
+  font: 500 10px var(--font-ui);
+  color: var(--color-muted);
+  margin-left: 3px;
+}
+
+.gapNote {
+  font: 500 11px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin-top: 7px;
+}
+
+/* ── Location consent ───────────────────────────────────── */
+
+.consent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.consentTitle {
+  font: 800 15px var(--font-ui);
+  color: var(--color-ink);
+}
+
+.consentBody {
+  font: 500 13px var(--font-ui);
+  color: var(--color-body);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+.promises {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--color-surface-tint);
+}
+
+.promise {
+  display: flex;
+  gap: 8px;
+  font: 500 12px var(--font-ui);
+  color: var(--color-body);
+  line-height: 1.5;
+}
+
+.tick {
+  color: var(--color-success-deep);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* The picker leads, so it gets the room and the primary button. */
+.pickRow {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.pickLabel {
+  font: 700 12px var(--font-ui);
+  color: var(--color-ink);
+}
+
+.pickControls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.pickControls select {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.consentActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.regionNow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font: 500 13px var(--font-ui);
+  color: var(--color-body);
+}
+
+.regionName {
+  font: 800 13px var(--font-ui);
+  color: var(--color-ink);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--color-primary-tint);
+}
+
+.consentError {
+  font: 500 12px var(--font-ui);
+  color: var(--color-error);
+  line-height: 1.5;
+}
+
+.blocked {
+  font: 500 13px var(--font-ui);
+  color: var(--color-muted);
+  line-height: 1.6;
+  padding: 16px;
+  border-radius: var(--radius-card);
+  border: 1px dashed var(--color-border);
+  background: var(--color-surface-tint);
+}

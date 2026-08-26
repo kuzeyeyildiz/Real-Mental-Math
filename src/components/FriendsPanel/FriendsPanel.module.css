@@ -1,0 +1,143 @@
+.heading {
+  font: 800 14px var(--font-ui);
+  color: var(--color-ink);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count {
+  font: 700 11px var(--font-ui);
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 11px 14px;
+}
+
+.who {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font: 700 14px var(--font-ui);
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.meta {
+  font: 500 12px var(--font-ui);
+  color: var(--color-muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  font: 700 12px var(--font-ui);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── The friends table ──────────────────────────────────── */
+
+.board {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.boardRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.boardRow:last-child {
+  border-bottom: 0;
+}
+
+.boardMe {
+  background: var(--color-primary-tint-alt);
+}
+
+.position {
+  flex-shrink: 0;
+  width: 26px;
+  text-align: center;
+  font: 800 13px var(--font-ui);
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.youTag {
+  font: 700 10px var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  background: var(--color-primary-tint);
+  border-radius: var(--radius-pill);
+  padding: 2px 7px;
+}
+
+.xp {
+  margin-left: auto;
+  font: 800 13px var(--font-ui);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+@media (max-width: 560px) {
+  .row {
+    flex-wrap: wrap;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
