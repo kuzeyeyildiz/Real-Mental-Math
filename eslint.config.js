@@ -19,4 +19,12 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  // Build config runs in Node, not the browser, so it gets Node's globals and
+  // none of the React rules.
+  {
+    files: ['vite.config.ts', 'eslint.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])
