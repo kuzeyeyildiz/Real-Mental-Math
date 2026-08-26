@@ -16,12 +16,22 @@ You need **Node 20 or newer** (developed on Node 22).
 npm install
 ```
 
+Then create your `.env` — the app reads its Supabase config from it and will
+refuse to start without it:
+
+```bash
+cp .env.example .env
+```
+
+Fill in the two values (see **Configuration** below), then:
+
 ```bash
 npm run dev
 ```
 
-Vite prints a local URL — open it in a browser. That's all: the app talks to a
-hosted Supabase project, so there is nothing to install or migrate locally.
+The dev server is pinned to **http://localhost:5175** — open it in a browser.
+Beyond `.env` there is nothing to install or migrate locally: the app talks to a
+hosted Supabase project.
 
 ### Other commands
 
@@ -34,11 +44,12 @@ npm run lint
 ```
 
 ```bash
-npx vitest run
+npm test
 ```
 
-`npm run build` type-checks and produces `dist/`. `npx vitest run` runs the test
-suite (269 tests, all pure logic — no browser or database needed).
+`npm run build` type-checks and produces `dist/`. `npm test` runs the test suite
+(283 tests, all pure logic — no browser or database needed); `npm run test:watch`
+keeps it running, and `npm run typecheck` checks types without building.
 
 ---
 

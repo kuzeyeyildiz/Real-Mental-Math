@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Local configuration. Numo reads VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY
+# from here; see the README. Never commit it — even though the publishable key
+# is meant to reach browsers, the repo is not where project config belongs.
+.env
+.env.*
+!.env.example
+
+# Editor / OS
+.DS_Store
+*.local
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test / tooling output
+coverage/
+*.tsbuildinfo
